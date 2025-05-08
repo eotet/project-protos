@@ -12,8 +12,6 @@ service TaskService {
   rpc DeleteTask (Task)                   returns (google.protobuf.Empty);
 }
 
-message Empty {}
-
 message Task {
   uint32 id    = 1;
   string title = 2;
