@@ -1,0 +1,30 @@
+syntax = "proto3";
+package user;
+option go_package = "github.com/eotet/project-protos/proto/user";
+
+import "google/protobuf/empty.proto";
+
+service UserService {
+  rpc CreateUser (CreateUserRequest)      returns (CreateUserResponse);
+  rpc GetUser    (User)                   returns (User);
+  rpc ListUsers  (google.protobuf.Empty)  returns (ListUsersResponse);
+  rpc UpdateUser (User)                   returns (User);
+  rpc DeleteUser (User)                   returns (google.protobuf.Empty);
+}
+
+message User {
+  uint32 id    = 1;
+  string email = 2;
+}
+
+message CreateUserRequest {
+  string email = 1;
+}
+
+message CreateUserResponse {
+  User user = 1;
+}
+
+message ListUsersResponse {
+  repeated User users = 1;
+}

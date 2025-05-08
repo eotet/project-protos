@@ -1,0 +1,32 @@
+syntax = "proto3";
+package task;
+option go_package = "github.com/eotet/project-protos/proto/task";
+
+import "google/protobuf/empty.proto";
+
+service TaskService {
+  rpc CreateTask (CreateTaskRequest)      returns (CreateTaskResponse);
+  rpc GetTask    (Task)                   returns (Task);
+  rpc ListTask   (google.protobuf.Empty)  returns (ListTasksResponse);
+  rpc UpdateTask (Task)                   returns (Task);
+  rpc DeleteTask (Task)                   returns (google.protobuf.Empty);
+}
+
+message Empty {}
+
+message Task {
+  uint32 id    = 1;
+  string title = 2;
+}
+
+message CreateTaskRequest {
+  string title = 1;
+}
+
+message CreateTaskResponse {
+  Task task = 1;
+}
+
+message ListTasksResponse {
+  repeated Task tasks = 1;
+}
