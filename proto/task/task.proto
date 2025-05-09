@@ -1,6 +1,6 @@
 syntax = "proto3";
 package task;
-option go_package = "github.com/eotet/project-protos/proto/task";
+option go_package = "github.com/eotet/project-protos/gen/go/task";
 
 import "google/protobuf/empty.proto";
 
