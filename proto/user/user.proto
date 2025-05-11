@@ -6,9 +6,9 @@ import "google/protobuf/empty.proto";
 
 service UserService {
   rpc CreateUser (CreateUserRequest)      returns (CreateUserResponse);
-  rpc GetUser    (GetUserRequest)         returns (User);
+  rpc GetUser    (GetUserRequest)         returns (GetUserResponse);
   rpc ListUsers  (google.protobuf.Empty)  returns (ListUsersResponse);
-  rpc UpdateUser (UpdateUserRequest)      returns (User);
+  rpc UpdateUser (UpdateUserRequest)      returns (UpdateUserResponse);
   rpc DeleteUser (DeleteUserRequest)      returns (google.protobuf.Empty);
 }
 
@@ -30,6 +30,10 @@ message GetUserRequest {
   uint32 id = 1;
 }
 
+message GetUserResponse {
+  User user = 1;
+}
+
 message ListUsersResponse {
   repeated User users = 1;
 }
@@ -38,6 +42,10 @@ message UpdateUserRequest {
   uint32 id    = 1;
   string email = 2;
   string password = 3;
+}
+
+message UpdateUserResponse {
+  User user = 1;
 }
 
 message DeleteUserRequest {
