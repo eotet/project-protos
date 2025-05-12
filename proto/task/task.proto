@@ -16,10 +16,12 @@ message Task {
   uint32 id     = 1;
   string title  = 2;
   bool   isDone = 3;
+  uint32 userId = 4;
 }
 
 message CreateTaskRequest {
   string title = 1;
+  uint32 userId = 4;
 }
 
 message CreateTaskResponse {
