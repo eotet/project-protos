@@ -6,15 +6,16 @@ import "google/protobuf/empty.proto";
 
 service TaskService {
   rpc CreateTask (CreateTaskRequest)      returns (CreateTaskResponse);
-  rpc GetTask    (Task)                   returns (Task);
+  rpc GetTask    (GetTaskRequest)         returns (GetTaskResponse);
   rpc ListTask   (google.protobuf.Empty)  returns (ListTasksResponse);
-  rpc UpdateTask (Task)                   returns (Task);
-  rpc DeleteTask (Task)                   returns (google.protobuf.Empty);
+  rpc UpdateTask (UpdateTaskRequest)      returns (UpdateTaskResponse);
+  rpc DeleteTask (DeleteTaskRequest)      returns (google.protobuf.Empty);
 }
 
 message Task {
-  uint32 id    = 1;
-  string title = 2;
+  uint32 id     = 1;
+  string title  = 2;
+  bool   isDone = 3;
 }
 
 message CreateTaskRequest {
@@ -25,6 +26,28 @@ message CreateTaskResponse {
   Task task = 1;
 }
 
+message GetTaskRequest {
+  uint32 id = 1;
+}
+
+message GetTaskResponse {
+  Task task = 1;
+}
+
 message ListTasksResponse {
   repeated Task tasks = 1;
+}
+
+message UpdateTaskRequest {
+  uint32 id     = 1;
+  string title  = 2;
+  bool   isDone = 3;
+}
+
+message UpdateTaskResponse {
+  Task task = 1;
+}
+
+message DeleteTaskRequest {
+  uint32 id = 1;
 }
